@@ -108,7 +108,7 @@ Material:
     - _EnvironmentReflections: 1
     - _First_Noise_Size: 9
     - _Foam_Distortion_Intensity: 0.5
-    - _Foam_Size: 0.134
+    - _Foam_Size: 0.063
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
