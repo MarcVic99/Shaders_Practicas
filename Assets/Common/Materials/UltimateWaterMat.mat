@@ -54,9 +54,11 @@ Material:
     - _FlowSpeed: 0.5
     - _FoamDensity: 5
     - _FoamSpeed: 0.5
-    - _FoamThickness: 5
+    - _FoamThickness: 3
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WaveHeight: 0.1
+    - _WaveSpread: 5
     m_Colors:
     - _FlowDirection: {r: 0.1, g: 0.3, b: 0, a: 0}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
