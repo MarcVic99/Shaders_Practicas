@@ -1,13 +1,11 @@
 #ifndef VORONOI_PERSONAL_INCLUDED
 #define VORONOI_PERSONAL_INCLUDED
 
-// Función Hash para aleatoriedad (requisito de IQ)
 float2 voronoi_hash(float2 p)
 {
     return frac(sin(float2(dot(p, float2(127.1, 311.7)), dot(p, float2(269.5, 183.3)))) * 43758.5453);
 }
 
-// IMPORTANTE: El nombre de la función termina en _float para Shader Graph
 void VoronoiCustom_float(float2 UV, float Time, float Scale, out float Cells, out float Lines)
 {
     float2 p = UV * Scale;
@@ -17,7 +15,7 @@ void VoronoiCustom_float(float2 UV, float Time, float Scale, out float Cells, ou
     float2 mg, mr;
     float md = 8.0;
 
-    // PRIMER PASE: Células (patrón de burbujas/cáusticas)
+    //Cells
     for (int j = -1; j <= 1; j++)
     {
         for (int i = -1; i <= 1; i++)
@@ -40,7 +38,7 @@ void VoronoiCustom_float(float2 UV, float Time, float Scale, out float Cells, ou
         }
     }
 
-    // SEGUNDO PASE: Distancia a los bordes (Líneas de Voronoi matemáticas)
+    //Distancia a los bordes
     md = 8.0;
     for (int jj = -2; jj <= 2; jj++)
     {
@@ -54,13 +52,11 @@ void VoronoiCustom_float(float2 UV, float Time, float Scale, out float Cells, ou
 
             if (dot(mr - r, mr - r) > 0.00001)
             {
-                // Cálculo específico para "Voronoi Lines" según IQ
                 md = min(md, dot(0.5 * (mr + r), normalize(r - mr)));
             }
         }
     }
-
-    // ASIGNACIÓN DE SALIDAS (Esto quita el error de 'uninitialized variable')
+    
     Cells = sqrt(dot(mr, mr));
     Lines = md;
 }
